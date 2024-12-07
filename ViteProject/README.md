@@ -40,7 +40,12 @@ This project is a CRD (Create, Read, Delete) application built using Vite with T
    ```
    This will start the Vite development server and open the application in your default web browser.
 
-## Usage
-- Fill out the form to add a new entity.
-- View the list of entities displayed below the form.
-- Click the "Delete" button next to an entity to remove it.
+## TypeScript Integration
+
+Type errors in the application were resolved by:
+- Adding explicit types to DOM elements, such as `HTMLTableSectionElement`, `HTMLFormElement`, `HTMLInputElement`, and `HTMLButtonElement`.
+- Specifying types for function parameters, particularly for event handlers using `Event`.
+- Defining the expected type of data returned from API calls as an array of objects with `id` and `name`.
+- Ensuring global functions are accessible by attaching them to the `window` object with `(window as any)`.
+
+These changes enhance type safety and improve code readability.
