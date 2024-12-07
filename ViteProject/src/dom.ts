@@ -52,3 +52,6 @@ export async function displayEntities() {
     tbody.appendChild(entityRow);
   });
 }
+
+// Attach deleteEntity to window for global access
+(window as any).deleteEntity = deleteEntity;
