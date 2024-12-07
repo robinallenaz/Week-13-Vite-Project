@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function fetchEntities() {
     try {
       const response = await fetch(apiUrl);
-      const entities = await response.json();
+      const entities: { id: number; name: string }[] = await response.json();
       displayEntities(entities);
     } catch (error) {
       console.error('Error fetching entities:', error);
@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Function to display entities on the page
-  function displayEntities(entities) {
-    const entityList = document.getElementById('entity-list');
+  function displayEntities(entities: { id: number; name: string }[]) {
+    const entityList = document.getElementById('entity-list') as HTMLTableSectionElement;
     entityList.innerHTML = ''; // Clear existing entities
 
     const table = document.createElement('table');
@@ -52,9 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Function to create a new entity
-  async function createEntity(event) {
+  async function createEntity(event: Event) {
     event.preventDefault();
-    const nameInput = document.getElementById('entity-name');
+    const nameInput = document.getElementById('entity-name') as HTMLInputElement;
     const newEntity = { name: nameInput.value };
 
     try {
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Define deleteEntity globally
-  window.deleteEntity = async function(id) {
+  (window as any).deleteEntity = async function(id: number) {
     try {
       await fetch(`${apiUrl}/${id}`, {
         method: 'DELETE'
@@ -85,11 +85,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Event listener for form submission
-  const form = document.getElementById('entity-form');
+  const form = document.getElementById('entity-form') as HTMLFormElement;
   form.addEventListener('submit', createEntity);
 
   // Event listener for fetching entities
-  const fetchButton = document.getElementById('fetch-entities');
+  const fetchButton = document.getElementById('fetch-entities') as HTMLButtonElement;
   fetchButton.addEventListener('click', fetchEntities);
 
   // Initial fetch of entities
