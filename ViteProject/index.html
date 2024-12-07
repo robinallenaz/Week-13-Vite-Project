@@ -7,7 +7,32 @@
     <title>Vite + TS</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div class="container mt-5">
+      <h1 class="text-center">CRD Application</h1>
+      <form id="entity-form" class="mb-4">
+        <div class="form-group">
+          <label for="entity-name">Entity Name</label>
+          <input type="text" class="form-control" id="entity-name" placeholder="Enter name" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Entity</button>
+      </form>
+      <!-- Button to fetch entities -->
+      <button id="fetch-entities" class="btn btn-info mb-3">Fetch Entities</button>
+
+      <!-- Table to display entities -->
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="entity-list">
+          <!-- Entities will be displayed here -->
+        </tbody>
+      </table>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

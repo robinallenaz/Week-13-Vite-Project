@@ -1,6 +1,3 @@
-// Import Bootstrap CSS
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 document.addEventListener('DOMContentLoaded', () => {
   const apiUrl = 'http://localhost:3000/entities'; 
 
