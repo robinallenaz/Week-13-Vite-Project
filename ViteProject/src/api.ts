@@ -4,8 +4,13 @@ const apiUrl = 'http://localhost:3000/entities';
 
 export async function fetchEntities() {
   try {
+    console.log('Fetching entities...');
+    console.log(`Requesting from: ${apiUrl}`);
     const response = await fetch(apiUrl);
-    const entities: { id: number; name: string }[] = await response.json();
+    console.log(`Response status: ${response.status}`);
+    const responseBody = await response.text();
+    console.log('Response body:', responseBody);
+    const entities: { id: number; name: string }[] = JSON.parse(responseBody);
     return entities;
   } catch (error) {
     console.error('Error fetching entities:', error);
